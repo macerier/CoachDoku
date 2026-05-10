@@ -33,7 +33,7 @@ Early development. See [ROADMAP.md](./ROADMAP.md) for milestones.
 Docker (recommended, no local Node required):
 
 ```bash
-docker compose up           # dev server with hot reload at http://localhost:5174
+docker compose up           # dev server with hot reload at http://localhost:5180
 docker build -t coachdoku . # build production image (nginx-served)
 ```
 
@@ -41,7 +41,7 @@ Or natively on the host:
 
 ```bash
 npm install
-npm run dev      # start dev server at http://localhost:5173
+npm run dev      # start dev server at http://localhost:5180
 npm run test     # run test suite
 npm run build    # production build
 npm run lint     # static checks
