@@ -1,0 +1,17 @@
+node_modules
+dist
+coverage
+.env
+.env.*
+*.local
+.vite
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf
+*.log
+.DS_Store
+
+# Local-only files (kept on disk, never published to the remote).
+docs/
+CLAUDE.md

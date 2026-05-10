@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+.git
+.idea
+.env
+.env.*
+*.log
+docs
+CLAUDE.md
