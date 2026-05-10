@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import Cell from '@/components/Cell';
 import type { Cell as CellType } from '@/types/board';
 import { ALL_DIGITS, fromDigits } from '@/core/candidates';
@@ -59,5 +60,31 @@ describe('Cell', () => {
       />,
     );
     expect(container.firstChild).toHaveAttribute('data-highlight', 'context');
+  });
+});
+
+describe('Cell interactivity', () => {
+  it('calls onClick when interactive and clicked', async () => {
+    const onClick = vi.fn();
+    const { container } = render(
+      <Cell cell={makeCell({ value: 0, index: 1 })} interactive onClick={onClick} />,
+    );
+    const user = userEvent.setup();
+    await user.click(container.firstChild as Element);
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('marks data-selected when selected prop is true', () => {
+    const { container } = render(
+      <Cell cell={makeCell({ value: 0 })} selected={true} />,
+    );
+    expect(container.firstChild).toHaveAttribute('data-selected', 'true');
+  });
+
+  it('marks data-conflict when conflict prop is true', () => {
+    const { container } = render(
+      <Cell cell={makeCell({ value: 5, given: false, candidates: 0 })} conflict={true} />,
+    );
+    expect(container.firstChild).toHaveAttribute('data-conflict', 'true');
   });
 });
