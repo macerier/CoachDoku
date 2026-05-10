@@ -20,7 +20,8 @@ describe('UI playthrough', () => {
   it('clicking Play then advancing fake timers steps the board', async () => {
     const user = userEvent.setup();
     render(<App />);
-    await user.click(screen.getByRole('button', { name: /play/i }));
+    const playButtons = screen.getAllByRole('button', { name: /play/i });
+    await user.click(playButtons[1]);
     expect(useGameStore.getState().isPlaying).toBe(true);
   });
 
